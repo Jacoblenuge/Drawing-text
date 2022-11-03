@@ -1,29 +1,46 @@
 //Global Variables
-int appWidth, appHeight;
-String title = "Wahoo";
+int appWidth, appHeight, fontSize;
+String title = "Wahoo" , Footer = "Drip!";
 float titleX, titleY, titleWidth, titleHeight;
-PFont titleFont;
+float FooterX, FooterY, FooterWidth, FooterHeight;
+PFont titleFont; 
+color Red=#FF3F0A, resetDefaultInk=#FFFFFF; //Not night mode friendly
 //
-size(800, 700);//Portrait
+size (950, 850); //Portrait
 appWidth = width;
 appHeight = height;
-//Copy the Display Algorithm Later
+//Copy the Display Algoirthm Later
 //
 //Population
-titleX = appWidth * 1/4 ;
-titleY = appHeight * 1/10 ;
-titleWidth = appWidth * 1/2 ;
-titleHeight = appHeight * 1/10 ;
+titleX =FooterX= appWidth * 1/4;
+titleY = appHeight * 1/10;
+FooterY = appHeight * 8/10;
+titleWidth =FooterWidth= appWidth * 1/2;
+titleHeight =FooterHeight= appHeight * 1/10;
+
+
 //
-//Text setup, single executed code
+//Text Setup, single executed code
 //Font from OS (Operating System)
-String[] fontList = PFont.list();//To list all fonts available on OS
-printArray(fontList);//For listing all posible fonts
-titleFont = createFont("Vladimir Script",66);//Verify the font exists in Processing.JAVA
+String[] fontList = PFont.list(); //To list all fonts available on OS
+printArray(fontList); //For listing all possible fonts
+titleFont = createFont("Vladimir Script",66); //Verify the font exists in Processing.JAVA
 // Tools / Create Font / Find Font / Do not press "OK", known bug
 //
 //Layout our text space and typographical features
 rect(titleX, titleY, titleWidth, titleHeight);
+rect(FooterX, FooterY, FooterWidth, FooterHeight);
 //
 //Text Draw: Repeatedly Executed Code
-text();
+fill(Red); //Ink
+textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+//Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
+fontSize = 60;
+textFont(titleFont, fontSize);
+text( title, titleX, titleY, titleWidth, titleHeight);
+textAlign(CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+//Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER | BOTTOM | BASELINE ]
+text( Footer,  FooterX, FooterY,  FooterWidth,  FooterHeight);
+fill(resetDefaultInk);
+//
+//End Main Program
